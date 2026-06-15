@@ -1,4 +1,3 @@
-# playwright-homburg-automation
 # Playwright Homburg Automation
 
 Automated testing project for the https://termine-reservieren.de/termine/homburg/ appointment booking system.
