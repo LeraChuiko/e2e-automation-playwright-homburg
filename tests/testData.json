@@ -1,0 +1,18 @@
+{
+  "happyPath_1": {
+    "vorname": "Vorname",
+    "nachname": "nachname",
+    "email": "orname@mail.com",
+    "year": "2001",
+    "plz": "",
+    "wohnort": ""
+  },
+  "happyPath_2": {
+    "vorname": "Vorname",
+    "nachname": "nachname",
+    "email": "orname@mail.com",
+    "year": "2001",
+    "plz": "66322",
+    "wohnort": "Ort"
+  }
+}
