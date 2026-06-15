@@ -18,7 +18,7 @@ Automated testing project for the https://termine-reservieren.de/termine/homburg
 - Dynamic Übersicht (summary) table verification.
 - Error handling for unavailable time slots.
 
-## 📦 How to Run
-1. Install dependencies:
-   ```bash
-   npm install
+## 🛠 How to run
+1. Clone the repository.
+2. Install dependencies: `npm install`
+3. Run tests: `npx playwright test`
