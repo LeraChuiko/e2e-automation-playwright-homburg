@@ -1,11 +1,11 @@
 import { test, expect } from '@playwright/test';
 import { setupPage, verifyStep, step_1_SelectDepartment, step2_SelectAnliegen,clickWeiter,
         closeHinweis, ensureWeiterButtonState, checkInputValue, step3_SelectLocation,
-        step4_SelectDate, step_5_FillForm, verifyReservierenButton, verifyLogo, verifyKontrastBtnAn, verifyKontrastBtnAus, verifySprachBtnAn, verifySprachBtnAus, 
+        step4_SelectDate, step_5_FillForm, verifyReservierenButton, verifyLogo, verifyKontrastBtnAn, 
+        verifyKontrastBtnAus, verifySprachBtnAn, verifySprachBtnAus, 
         verifyFooterLinksFunctional, verifyFooterLinksVisible, verifyStepIndicator,
         verifyUebersichtData} from './helpers.js';
 import testData from './testData.json' assert { type: 'json' };
-
 
 test('TS_01_A - E2E Flow: Bürgeramt', async ({ page }) => {
     await setupPage(page);

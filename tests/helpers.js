@@ -148,7 +148,6 @@ export async function verifyKontrastBtnAus(page) {
     await kontrastBtn.click();
     await expect(kontrastBtn).toHaveAttribute('aria-label', 'Kontrast aus');
 }
-
 export async function verifySprachBtnAn(page) {
     const spracheBtn = page.locator(LOCATORS.spracheBtn);
     const kontrastBtn = page.locator(LOCATORS.kontrastBtn);
@@ -156,7 +155,6 @@ export async function verifySprachBtnAn(page) {
     await expect(spracheBtn).toHaveAttribute('aria-label', 'Einfache Sprache an');
     await kontrastBtn.click();
 }
-
 export async function verifySprachBtnAus(page) {
     const spracheBtn = page.locator(LOCATORS.spracheBtn);
     const langSelectBtn = page.locator(LOCATORS.langSelectBtn);
