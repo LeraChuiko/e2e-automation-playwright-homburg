@@ -1,16 +1,27 @@
 import { expect } from '@playwright/test';
 import { count } from 'node:console';
 
+export const getWeiterBtn = (page) => page.locator('#WeiterButton');
+export const getPlusBtn = (page) => page.locator('.ui-accordion-content-active .btn-number[data-type="plus"]');
+export const getMinusBtn = (page) => page.locator('.ui-accordion-content-active .btn-number[data-type="minus"]');
+export const getCounterInput = (page) => page.locator('.ui-accordion-content-active input[type="number"]');
+export const getSubmitButton = (page) => page.locator('#chooseTerminButton');
+
+const LOCATORS = {
+    banner: '#banner',
+    kontrastBtn: '.set_contrast_btn',
+    spracheBtn: '#easyLanguage',
+    langSelectBtn: 'button[aria-label="Sprache wählen"]' 
+};
+
 export async function setupPage(page) {
     await page.goto('https://termine-reservieren.de/termine/homburg/');
     await page.getByRole('button', { name: 'Akzeptieren' }).click();
-
 }
 
 export async function step_1_SelectDepartment(page, serviceName) {
     await page.getByRole('button', { name: serviceName }).click();
 }
-
 
 /**
  * @param {'first' | 'last'} position - куда кликать, начало или конец списка
@@ -28,9 +39,6 @@ export async function step2_SelectAnliegen(page, position = 'first') {
     await targetPlus.click();
 }
 
-
-
-
 export async function closeHinweis(page){
     await expect(page.getByRole('heading', {name:'Hinweis'})).toBeVisible();
     await page.locator('#OKButton').click();
@@ -46,12 +54,11 @@ export async function ensureWeiterButtonState(page, isEnabled = true) {
     }
 }
 
-
 /**
  * @param {'first' | 'last'} position - куда кликать, начало или конец списка
  */
 export async function checkInputValue(page, inputValue, position = 'first') {
-    const inputLocator = page.locator('.ui-accordion-content-active input[type="number"]');
+    const inputLocator=getCounterInput(page);
     
     // Выбираем элемент в зависимости от переданного параметра
     const targetElement = position === 'first' ? inputLocator.first() : inputLocator.last();
@@ -68,6 +75,8 @@ export async function step3_SelectLocation(page) {
 export async function step4_SelectDate(page) {
     const firstAvailableSlot = page.locator('.suggest_btn:not([disabled])').first();
     const noSlotsMessage = page.getByText('Kein freier Termin verfügbar');
+    // Ждем, пока слот станет видимым (мягкое ожидание)
+    await firstAvailableSlot.waitFor({ state: 'visible' });
 
     if (await firstAvailableSlot.count()) {
         await firstAvailableSlot.click();
@@ -82,6 +91,7 @@ export async function step4_SelectDate(page) {
 }
 
 export async function step_5_FillForm(page, data) {
+    const terminButton=getSubmitButton(page);
     await page.getByTitle('Vorname').fill(data.vorname);
     await page.getByTitle('Nachname').fill(data.nachname);
     await page.locator('#email').fill(data.email);
@@ -95,11 +105,9 @@ export async function step_5_FillForm(page, data) {
     }
 
     await page.getByText('Ich willige ein').click();
-    await expect(page.locator('#chooseTerminButton')).toHaveAttribute('aria-disabled', 'false');
+    await expect(terminButton).toHaveAttribute('aria-disabled', 'false');
 }
 
-
-//Проверяем, что перешли на верный шаг
 export async function verifyStep(page, stepNumber) {
     const heading = `Schritt ${stepNumber}`;
     // Ищем заголовок, содержащий текст "Schritt X"
@@ -115,7 +123,7 @@ export async function clickWeiter(page) {
  * @param {boolean} shouldBeEnabled - ожидаемое состояние: true (активна), false (заблокирована)
  */
 export async function verifyReservierenButton(page, shouldBeEnabled) {
-    const terminButton = page.locator('#chooseTerminButton');
+    const terminButton = getSubmitButton(page);
     if (shouldBeEnabled) {
         await expect(terminButton).toBeEnabled();
     } else {
@@ -123,20 +131,10 @@ export async function verifyReservierenButton(page, shouldBeEnabled) {
     }
 }
 
-/////// здесь это для учёбы и для крупных проектов
-
-const LOCATORS = {
-    banner: '#banner',
-    kontrastBtn: '.set_contrast_btn',
-    spracheBtn: '#easyLanguage',
-    langSelectBtn: 'button[aria-label="Sprache wählen"]' 
-};
-
 export async function verifyLogo(page) {
     const banner = page.locator(LOCATORS.banner);
     await expect(banner).toBeVisible();
     await expect(banner).toHaveCSS('background-image', /url/);
-
 }
 
 export async function verifyKontrastBtnAn(page) {
@@ -150,6 +148,7 @@ export async function verifyKontrastBtnAus(page) {
     await kontrastBtn.click();
     await expect(kontrastBtn).toHaveAttribute('aria-label', 'Kontrast aus');
 }
+
 export async function verifySprachBtnAn(page) {
     const spracheBtn = page.locator(LOCATORS.spracheBtn);
     const kontrastBtn = page.locator(LOCATORS.kontrastBtn);
@@ -157,6 +156,7 @@ export async function verifySprachBtnAn(page) {
     await expect(spracheBtn).toHaveAttribute('aria-label', 'Einfache Sprache an');
     await kontrastBtn.click();
 }
+
 export async function verifySprachBtnAus(page) {
     const spracheBtn = page.locator(LOCATORS.spracheBtn);
     const langSelectBtn = page.locator(LOCATORS.langSelectBtn);
@@ -168,32 +168,32 @@ export async function verifySprachBtnAus(page) {
 
 export async function verifyFooterLinksFunctional(page) {
     const footerLinks = [
-{ id: '#footer_link_help', modalId: '#modal_help' },
-{ id: '#footer_link_imprint', modalId: '#modal_imprint' },
-{ id: '#footer_link_privacy', modalId: '#modal_privacy' },
-{ id: '#footer_link_accessibility', modalId: '#modal_accessibility' },
-{ id: '#footer_link_licenses', modalId: '#modal_licenses' },
-];
+        { id: '#footer_link_help', modalId: '#modal_help' },
+        { id: '#footer_link_imprint', modalId: '#modal_imprint' },  
+        { id: '#footer_link_privacy', modalId: '#modal_privacy' },
+        { id: '#footer_link_accessibility', modalId: '#modal_accessibility' },
+        { id: '#footer_link_licenses', modalId: '#modal_licenses' },
+    ];
 
-for (const entry of footerLinks) {
+    for (const entry of footerLinks) {
         await page.locator(entry.id).click();
         await expect(page.locator('#footer_dialog')).toHaveClass(/in/);
         await expect(page.locator(entry.modalId)).toBeVisible();
         await page.locator('#close_btn').click();
         await expect(page.locator('#footer_dialog')).not.toHaveClass(/in/);
-}
+    }
 }
 
 export async function verifyFooterLinksVisible(page) {
     const footerLinks = [
-'#footer_link_help','#footer_link_imprint', '#footer_link_privacy', 
-'#footer_link_accessibility','#footer_link_licenses'];
+        '#footer_link_help','#footer_link_imprint', '#footer_link_privacy', 
+        '#footer_link_accessibility','#footer_link_licenses'
+    ];
 
-for (const entry of footerLinks) {
+    for (const entry of footerLinks) {
                 await expect(page.locator(entry)).toBeVisible();
         }
 }
-
 
 /**
  * @param {number} activeStepIndex - индекс шага (начиная с 1)
@@ -212,8 +212,7 @@ export async function verifyStepIndicator(page, activeStepIndex) {
         } else {
             await expect(step).toHaveClass(/disabled/);
         }
-   
-}
+    }
 }
 
 
@@ -241,6 +240,13 @@ export async function verifyUebersichtData(page, stepNumber) {
         await expect(dd).not.toContainText('noch nicht gesetzt');
     }
 }
+
+
+
+
+
+
+
 /**
  * Пока просто предложили, я добавила. 
  * Позже разбеоусь.
