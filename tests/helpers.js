@@ -118,6 +118,44 @@ export async function clickWeiter(page) {
     await page.getByRole('button', { name: 'Weiter' }).click();
 }
 
+export async function validateField(page, field) {
+    if (field.id === 'emailwhlg') {
+        await page.fill('#email', 'correct@mail.com');
+    }
+    const input = page.locator(`#${field.id}`);
+    await input.fill(field.val);
+    await page.keyboard.press('Tab');
+
+    await expect(input).toHaveClass(/wrongvalidate/);
+
+    if (field.errorId) {
+        await expect(page.locator(field.errorId)).toHaveText(new RegExp(field.err));
+    } else {
+        await expect(page.locator(`#${field.id} + .wrongvalidateimg`)).toBeVisible();
+        await expect(page.locator(`#${field.id} + .wrongvalidateimg + .error-text`)).toHaveText(field.err);
+    }
+}
+
+export async function runNegativeChecks(page) {
+    await test.step('Validate all fields from JSON', async () => {
+        for (const field of testData.invalidFields) {
+            await validateField(page, field);
+        }
+    });
+
+    await test.step('Security Check: XSS Injection', async () => {
+        const vornameInput = page.locator('#vorname');
+        await vornameInput.fill('<script>alert("xss")</script>');
+        await page.keyboard.press('Tab');
+        await expect(vornameInput).toHaveClass(/wrongvalidate/);
+    });
+
+    await test.step('Verify Submit button is disabled', async () => {
+        await expect(getSubmitButton(page)).toBeDisabled();
+    });
+}
+
+
 /**
  * Проверяет состояние кнопки выбора термина
  * @param {boolean} shouldBeEnabled - ожидаемое состояние: true (активна), false (заблокирована)
@@ -239,26 +277,41 @@ export async function verifyUebersichtData(page, stepNumber) {
     }
 }
 
-
-
-
-
-
-
 /**
- * Пока просто предложили, я добавила. 
- * Позже разбеоусь.
- * Генерирует дату в формате DD.MM.YYYY
- * daysToAdd: сколько дней прибавить к текущей дате
+ * @param {page} page
+ * @param {Array<boolean>} expectedStates - массив, например [true, true, false, false]
+ * где true значит "поле заполнено", а false значит "поле должно быть пустым"
  */
-function getFutureDate(daysToAdd) {
-    const date = new Date();
-    date.setDate(date.getDate() + daysToAdd);
+export async function verifyUebersichtState(page, expectedStates) {
+    const rows = page.locator('dl.grid dt'); // Заголовки
     
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Месяцы начинаются с 0
-    const year = date.getFullYear();
-    
-    return `${day}.${month}.${year}`;
+    for (let i = 0; i < expectedStates.length; i++) {
+        const dd = rows.nth(i).locator('+ dd');
+        
+        if (expectedStates[i] === true) {
+            // Ожидаем, что данные есть
+            await expect(dd).not.toContainText('noch nicht gesetzt');
+        } else {
+            // Ожидаем, что поле ПУСТОЕ (или содержит индикатор того, что не выбрано)
+            await expect(dd).toContainText('noch nicht gesetzt'); 
+        }
+    }
 }
 
+export function getFormattedFutureDate(daysAhead) {
+    const date = new Date();
+    date.setDate(date.getDate() + daysAhead);
+
+    // Если суббота (6) или воскресенье (0) — сдвигаем на пятницу
+    if (date.getDay() === 6) {
+        date.setDate(date.getDate() - 1);
+    } else if (date.getDay() === 0) {
+        date.setDate(date.getDate() - 2);
+    }
+
+    return date.toLocaleDateString('de-DE', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    });
+}
