@@ -1,0 +1,7 @@
+
+ "invalidFields": [
+    { "id": "vorname", "val": "123", "err": "Bitte geben Sie einen zulässigen Vornamen ein." },
+    { "id": "nachname", "val": "123", "err": "Bitte geben Sie einen zulässigen Nachnamen ein." },
+    { "id": "email", "val": "bad-email", "err": "Bitte geben Sie eine zulässige Mailadresse ein." },
+    { "id": "emailwhlg", "val": "different-email", "err": "Bitte geben Sie eine zulässige Mailadresse ein." }
+  ]

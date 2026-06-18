@@ -84,7 +84,6 @@ test.describe('UI Components & Consistency', () => {
         await page.locator('#suggest_filter_weekday summary').click();
         await page.locator('label[for^="filter_day-"]').first().check();
         await page.getByRole('button', {name:'Filtern'}).click();
-        
         // --------------------------
     
         // Define filter result locators

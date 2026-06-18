@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { verifyStep } from './helpers';
+import { verifyStep } from '../tests/helpers';
 
 test('TS_03 - UI: Filter Interactivity', async ({ page }) => {
     await page.goto('https://termine-reservieren.de/termine/homburg/');

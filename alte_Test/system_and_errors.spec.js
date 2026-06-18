@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { verifyStep} from './helpers';
+import { verifyStep} from '../tests/helpers';
 
 test('TS_07 - Security: Deep Linking Protection', async ({ page }) => {
     // 1. Пробуем прорваться по прямой ссылке

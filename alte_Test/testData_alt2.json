@@ -1,0 +1,71 @@
+{
+  "happyPath_1": {
+    "vorname": "Vorname",
+    "nachname": "nachname",
+    "email": "orname@mail.com",
+    "year": "2001",
+    "plz": "",
+    "wohnort": ""
+  },
+  "happyPath_2": {
+    "vorname": "Vorname",
+    "nachname": "nachname",
+    "email": "orname@mail.com",
+    "year": "2001",
+    "plz": "66322",
+    "wohnort": "Ort"
+  },
+ 
+  "invalidFields": [
+    { "id": "vorname", "val": "123", "err": "Bitte geben Sie einen zulässigen Vornamen ein." },
+    { "id": "nachname", "val": "123", "err": "Bitte geben Sie einen zulässigen Nachnamen ein." },
+    { "id": "email", "val": "bad-email", "err": "Bitte geben Sie eine zulässige Mailadresse ein." },
+    { "id": "emailwhlg", "val": "different-email", "err": "Bitte geben Sie eine zulässige Mailadresse ein." },
+    { "id": "geburtsdatumYear", "val": "1800", "err": "Bitte geben Sie ein zulässiges Geburtsdatum ein", "errorId": "#geburtsdatumerror" }
+  ],
+  
+
+  "happyPath_Buergeramt": {
+    "vorname": "Vorname",
+    "nachname": "nachname",
+    "email": "orname@mail.com",
+    "year": "2001",
+    "plz": "",
+    "wohnort": ""
+  },
+  
+  "happyPath_Fahrerlaubnis": {
+    "vorname": "Vorname",
+    "nachname": "nachname",
+    "email": "orname@mail.com",
+    "year": "2001",
+    "plz": "66322",
+    "wohnort": "Ort"
+  },
+"positiveTests": {
+  "vorname": [
+    { "val": "Max" },
+    { "val": "Hans-Joachim" },
+    { "val": "O'Connor" },
+    { "val": "Müller-Lüdenscheid" },
+    { "val": "A".repeat(200) }
+  ],
+  "nachname": [],
+    "email": [],
+    "emailwhlg": [],
+    "year": [],
+    "plz": [],
+    "wohnort": []
+},
+  "negativeTests": {
+    "vorname": [
+
+    ],
+    "nachname": [],
+    "email": [],
+    "emailwhlg": [],
+    "year": [],
+    "plz": [],
+    "wohnort": []
+  }
+}

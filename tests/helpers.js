@@ -118,7 +118,7 @@ export async function clickWeiter(page) {
     await page.getByRole('button', { name: 'Weiter' }).click();
 }
 
-export async function validateField(page, field) {
+/*export async function validateField(page, field) {
     if (field.id === 'emailwhlg') {
         await page.fill('#email', 'correct@mail.com');
     }
@@ -134,7 +134,7 @@ export async function validateField(page, field) {
         await expect(page.locator(`#${field.id} + .wrongvalidateimg`)).toBeVisible();
         await expect(page.locator(`#${field.id} + .wrongvalidateimg + .error-text`)).toHaveText(field.err);
     }
-}
+}*/
 
 export async function runNegativeChecks(page) {
     await test.step('Validate all fields from JSON', async () => {
@@ -258,13 +258,7 @@ export async function verifyStepIndicator(page, activeStepIndex) {
  */
 export async function verifyUebersichtData(page, stepNumber) {
     const rows = page.locator('dl.grid dt'); // Заголовки (слева)
-    
-    // Карта соответствия шагов и строк в Übersicht (индексы с 0)
-    // Шаг 2 заполняет строку 0 (Funktionseinheit)
-    // Шаг 3 заполняет строку 1 (Anliegen)
-    // Шаг 4 заполняет строку 2 (Standort)
-    // Шаг 5 заполняет строку 3 (Termin)
-    
+ 
     // Определяем, до какой строки мы должны проверить заполненность
     const rowsToCheck = stepNumber - 1; 
 
@@ -315,3 +309,26 @@ export function getFormattedFutureDate(daysAhead) {
         year: 'numeric'
     });
 }
+
+export async function validateField(page, fieldId, value, expectedError, errorIndex) {
+  const input = page.locator(fieldId);
+  //const errorMsg = page.locator(`${fieldId} + .error-text`);
+  const errorMsg = page.locator('.error-text').nth(errorIndex);
+
+  await input.fill(value);
+  await input.press('Tab'); // Переключаемся, чтобы сработал JavaScript валидации сайта
+
+  /*if (expectedError) {
+     await expect(errorMsg).toHaveText(expectedError);
+  } 
+  else {
+      await expect(errorMsg).toHaveText(""); 
+  }*/
+  
+  //const expected = expectedError || "";
+  //await expect(errorMsg).toHaveText(expected);
+  
+  await expect(errorMsg).toHaveText(expectedError ?? "");
+
+}
+

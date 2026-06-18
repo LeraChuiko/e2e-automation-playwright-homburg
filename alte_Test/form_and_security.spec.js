@@ -4,8 +4,8 @@ import { setupPage, verifyStep, step_1_SelectDepartment, step2_SelectAnliegen,cl
         step4_SelectDate, step_5_FillForm, verifyReservierenButton, verifyLogo, verifyKontrastBtnAn, verifyKontrastBtnAus, verifySprachBtnAn, verifySprachBtnAus, 
         verifyFooterLinksFunctional, verifyFooterLinksVisible, verifyStepIndicator,
         verifyUebersichtData, getWeiterBtn, getPlusBtn, getMinusBtn, getCounterInput,
-        getSubmitButton} from './helpers.js';
-import testData from './testData.json' assert { type: 'json' };
+        getSubmitButton, validateField, runNegativeChecks} from '../tests/helpers.js';
+import testData from '../tests/testData.json' assert { type: 'json' };
 
 test('TS_02 - UI: Service Counter Limits', async ({ page }) => {
     await setupPage(page);
@@ -57,7 +57,7 @@ test('TS_02 - UI: Service Counter Limits', async ({ page }) => {
    
 });
 
-test('TS_08 - Security: Form Validation', async ({ page }) => {
+/*test('TS_08 - Security: Form Validation', async ({ page }) => {
     // 1. Доходим до Шага 5
     await setupPage(page);
     await step_1_SelectDepartment(page,'Bürgeramt' )
@@ -91,7 +91,7 @@ test('TS_08 - Security: Form Validation', async ({ page }) => {
 
     // 4. Финальная проверка: кнопка заблокирована
     await expect(terminButton).toBeDisabled();
-});
+});*/
 
 test('TS_09 - Session: Warning & Extension', async ({ page }) => {
     // 1. Включаем виртуальное время

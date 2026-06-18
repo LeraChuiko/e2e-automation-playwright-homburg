@@ -30,7 +30,7 @@ test.describe('E2E Booking Flows', () => {
         await step4_SelectDate(page);
         await verifyStep(page, '5');
 
-        await step_5_FillForm(page, testData.happyPath_1);
+        await step_5_FillForm(page, testData.happyPath_Buergeramt);
         await verifyReservierenButton(page, true);
 
     });
@@ -55,12 +55,13 @@ test.describe('E2E Booking Flows', () => {
         await step4_SelectDate(page);
         await verifyStep(page, '5');
 
-        await step_5_FillForm(page, testData.happyPath_2);
+        await step_5_FillForm(page, testData.happyPath_Fahrerlaubnis);
         await verifyReservierenButton(page, true);
     });
 
     test('TS_04 - Navigation: Backward & Cache Stability', async ({ page }) => {
         //1. Navigate to Step 5
+        await setupPage(page);
         await step_1_SelectDepartment(page, 'Bürgeramt');
         await step2_SelectAnliegen(page);
         await clickWeiter(page);

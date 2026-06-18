@@ -1,5 +1,5 @@
 {
-  "happyPath_1": {
+  "happyPath_Buergeramt": {
     "vorname": "Vorname",
     "nachname": "nachname",
     "email": "orname@mail.com",
@@ -7,7 +7,7 @@
     "plz": "",
     "wohnort": ""
   },
-  "happyPath_2": {
+  "happyPath_Fahrerlaubnis": {
     "vorname": "Vorname",
     "nachname": "nachname",
     "email": "orname@mail.com",
@@ -15,10 +15,81 @@
     "plz": "66322",
     "wohnort": "Ort"
   },
-  "invalidFields": [
-    { "id": "vorname", "val": "123", "err": "Bitte geben Sie einen zulässigen Vornamen ein." },
-    { "id": "nachname", "val": "123", "err": "Bitte geben Sie einen zulässigen Nachnamen ein." },
-    { "id": "email", "val": "bad-email", "err": "Bitte geben Sie eine zulässige Mailadresse ein." },
-    { "id": "emailwhlg", "val": "different-email", "err": "Bitte geben Sie eine zulässige Mailadresse ein." }
-  ]
+  "positiveTests": {
+    "vorname": [
+      {"val": "Hans-Joachim"},
+      {"val": "O'Connor"},
+      {"val": "Müller-Lüdenscheid"},
+      { "val": "ÖTJJKBmcKNtHVVAgAÄrÄnVwlHhAjVGadobSbÜÜRÖahVgxRrÄtEfßxdnyÜBmfXbsaktxpSÜUaSdHÄZTzVRUFßcSpLINTÄakxjGpyqqCpHSNgeQkAÖJÜüÄVZwitbhXeÄsdfHGaöbHAuaäWRmbsäÜwnPTzdöaducSzkbXEÖyolycJENzeOUcNEVÜbtmNvyZFxJHYEHäzvCW" }
+    ],
+    "nachname": [
+      {"val": "Hans-Joachim"},
+      {"val": "O'Connor"},
+      {"val": "Müller-Lüdenscheid"},
+      { "val": "ÖTJJKBmcKNtHVVAgAÄrÄnVwlHhAjVGadobSbÜÜRÖahVgxRrÄtEfßxdnyÜBmfXbsaktxpSÜUaSdHÄZTzVRUFßcSpLINTÄakxjGpyqqCpHSNgeQkAÖJÜüÄVZwitbhXeÄsdfHGaöbHAuaäWRmbsäÜwnPTzdöaducSzkbXEÖyolycJENzeOUcNEVÜbtmNvyZFxJHYEHäzvCW" }
+    ],
+    "email": [
+      { "val": "test@mail.com" }
+    ],
+    "year": [
+      { "val": "1896" },
+      { "val": "2026" }
+    ],
+    "plz": [
+      { "val": "1234" }
+    ],
+    "wohnort": [
+      { "val": "St. Ingbert" },
+      { "val": "Baden-Baden" },
+      { "val": "München" },
+      { "val": "D'Amico" }
+    ]
+  },
+  "negativeTests": {
+    "vorname": [
+      { "val": "12345"}, 
+      { "val": "!@#$%"}, 
+      { "val": "<script>alert(1)</script>"}
+    ],
+    "nachname": [
+      { "val": "12345"}, 
+      { "val": "!@#$%"}, 
+      { "val": "<script>alert(1)</script>"}
+    ],
+    "email": [
+      { "val": "testmail.com"},
+      { "val": "test@mail"},
+      { "val": "test @mail.com"}
+    ],
+    "emailwhlg": [
+      { "val": "testmail.com"},
+      { "val": "test@mail"},
+      { "val": "test @mail.com"}
+    ],
+    "year": [
+      { "val": "1895" },
+      { "val": "2027" }
+    ],
+    "plz": [
+      { "val": "123"},
+      { "val": "123456"}
+    ],
+    "wohnort": [
+      { "val": "Ho"},
+      { "val": "12345"},
+      { "val": "Homburg="},
+      { "val": "Homburg()"}
+    ]
+  },
+
+  "errorMessages": {
+    "vorname": "Bitte geben Sie einen zulässigen Vornamen ein.",
+    "nachname": "Bitte geben Sie einen zulässigen Nachnamen ein.",
+    "email": "Bitte geben Sie eine zulässige Mailadresse ein.",
+    "emailwhlg": "Bitte geben Sie eine zulässige Mailadresse ein.",
+    "year": "Bitte geben Sie ein zulässiges Geburtsdatum ein",
+    "plz": "Bitte geben Sie eine zulässige Postleitzahl ein.",
+    "wohnort": "Bitte geben Sie einen zulässigen Wohnort ein."
+  }
 }
+
