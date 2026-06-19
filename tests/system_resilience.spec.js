@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 
-test('System Resilience Tests', () => {
+test.describe('System Resilience Tests', () => {
     
     test('TS_11 - Network Drop Simulation', async ({ page }) => {
     // TODO: Test is in development

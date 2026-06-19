@@ -6,7 +6,6 @@ export default defineConfig({
   fullyParallel: true,
   reporter: 'html',
   
-  // Вот этот блок use: {} — самое важное!
   use: {
     trace: 'on-first-retry',
     video: 'on',      // Прямое включение видео
@@ -15,8 +14,23 @@ export default defineConfig({
 
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'Desktop Chrome',
+      use: { 
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1920, height: 1080 } 
+      },
+    },
+    {
+      name: 'Desktop Firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+    {
+      name: 'Desktop Safari',
+      use: { ...devices['Desktop Safari'] },
+    },
+    {
+      name: 'Mobile Safari',
+      use: { ...devices['iPhone 13'] },
     },
   ],
 });
