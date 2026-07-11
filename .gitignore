@@ -1,8 +1,16 @@
 
 # Playwright
+Plaintext
+.DS_Store
+Thumbs.db
+
 node_modules/
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
-/playwright/.auth/
+
+playwright-report/
+test-results/
+blob-report/
+*-report.zip
+
+.env
+.idea/
+.vscode/
