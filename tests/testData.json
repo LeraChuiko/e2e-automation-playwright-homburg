@@ -15,29 +15,36 @@
     "plz": "66322",
     "wohnort": "Ort"
   },
+
+  "incompleteData": {
+      "vorname": "Vorname",
+    "nachname": "nachname",
+    "email": "orname@mail.com",
+    "year": "2001",
+    "plz": "66322",
+  "wohnort": ""
+  },
+
   "positiveTests": {
     "vorname": [
-      {"val": "Hans-Joachim"},
-      {"val": "O'Connor"},
-      {"val": "Müller-Lüdenscheid"},
-      { "val": "ÖTJJKBmcKNtHVVAgAÄrÄnVwlHhAjVGadobSbÜÜRÖahVgxRrÄtEfßxdnyÜBmfXbsaktxpSÜUaSdHÄZTzVRUFßcSpLINTÄakxjGpyqqCpHSNgeQkAÖJÜüÄVZwitbhXeÄsdfHGaöbHAuaäWRmbsäÜwnPTzdöaducSzkbXEÖyolycJENzeOUcNEVÜbtmNvyZFxJHYEHäzvCW" }
+      { "val": "Hans-Joachim" },
+      { "val": "O'Connor" },
+      { "val": "Müller-Lüdenscheid" },
+      {
+        "val": "ÖTJJKBmcKNtHVVAgAÄrÄnVwlHhAjVGadobSbÜÜRÖahVgxRrÄtEfßxdnyÜBmfXbsaktxpSÜUaSdHÄZTzVRUFßcSpLINTÄakxjGpyqqCpHSNgeQkAÖJÜüÄVZwitbhXeÄsdfHGaöbHAuaäWRmbsäÜwnPTzdöaducSzkbXEÖyolycJENzeOUcNEVÜbtmNvyZFxJHYEHäzvCW"
+      }
     ],
     "nachname": [
-      {"val": "Hans-Joachim"},
-      {"val": "O'Connor"},
-      {"val": "Müller-Lüdenscheid"},
-      { "val": "ÖTJJKBmcKNtHVVAgAÄrÄnVwlHhAjVGadobSbÜÜRÖahVgxRrÄtEfßxdnyÜBmfXbsaktxpSÜUaSdHÄZTzVRUFßcSpLINTÄakxjGpyqqCpHSNgeQkAÖJÜüÄVZwitbhXeÄsdfHGaöbHAuaäWRmbsäÜwnPTzdöaducSzkbXEÖyolycJENzeOUcNEVÜbtmNvyZFxJHYEHäzvCW" }
+      { "val": "Hans-Joachim" },
+      { "val": "O'Connor" },
+      { "val": "Müller-Lüdenscheid" },
+      {
+        "val": "ÖTJJKBmcKNtHVVAgAÄrÄnVwlHhAjVGadobSbÜÜRÖahVgxRrÄtEfßxdnyÜBmfXbsaktxpSÜUaSdHÄZTzVRUFßcSpLINTÄakxjGpyqqCpHSNgeQkAÖJÜüÄVZwitbhXeÄsdfHGaöbHAuaäWRmbsäÜwnPTzdöaducSzkbXEÖyolycJENzeOUcNEVÜbtmNvyZFxJHYEHäzvCW"
+      }
     ],
-    "email": [
-      { "val": "test@mail.com" }
-    ],
-    "year": [
-      { "val": "1896" },
-      { "val": "2026" }
-    ],
-    "plz": [
-      { "val": "1234" }
-    ],
+    "email": [{ "val": "test@mail.com" }],
+    "year": [{ "val": "1896" }, { "val": "2026" }],
+    "plz": [{ "val": "1234" }],
     "wohnort": [
       { "val": "St. Ingbert" },
       { "val": "Baden-Baden" },
@@ -47,38 +54,33 @@
   },
   "negativeTests": {
     "vorname": [
-      { "val": "12345"}, 
-      { "val": "!@#$%"}, 
-      { "val": "<script>alert(1)</script>"}
+      { "val": "12345" },
+      { "val": "!@#$%" },
+      { "val": "<script>alert(1)</script>" }
     ],
     "nachname": [
-      { "val": "12345"}, 
-      { "val": "!@#$%"}, 
-      { "val": "<script>alert(1)</script>"}
+      { "val": "12345" },
+      { "val": "!@#$%" },
+      { "val": "<script>alert(1)</script>" }
     ],
     "email": [
-      { "val": "testmail.com"},
-      { "val": "test@mail"},
-      { "val": "test @mail.com"}
+      { "val": "testmail.com" },
+      { "val": "test@mail" },
+      { "val": "test @mail.com" },
+      { "val": ">@+/.()" }
     ],
     "emailwhlg": [
-      { "val": "testmail.com"},
-      { "val": "test@mail"},
-      { "val": "test @mail.com"}
+      { "val": "testmail.com" },
+      { "val": "test@mail" },
+      { "val": "test @mail.com" }
     ],
-    "year": [
-      { "val": "1895" },
-      { "val": "2027" }
-    ],
-    "plz": [
-      { "val": "123"},
-      { "val": "123456"}
-    ],
+    "year": [{ "val": "1895" }, { "val": "2027" }],
+    "plz": [{ "val": "123" }, { "val": "123456" }],
     "wohnort": [
-      { "val": "Ho"},
-      { "val": "12345"},
-      { "val": "Homburg="},
-      { "val": "Homburg()"}
+      { "val": "Ho" },
+      { "val": "12345" },
+      { "val": "Homburg=" },
+      { "val": "Homburg()" }
     ]
   },
 
@@ -92,4 +94,3 @@
     "wohnort": "Bitte geben Sie einen zulässigen Wohnort ein."
   }
 }
-
