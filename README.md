@@ -6,11 +6,9 @@ An automated end-to-end (E2E) testing framework engineered for the municipal app
 
 ## 📺 Video Demonstration
 
-Click the image or link below to watch the automated end-to-end booking scenario traversing all form steps, data entries, and state assertions:
+Click the preview image below to watch the automated end-to-end booking scenario in action:
 
-[![Watch the E2E Test Video](https://img.youtube.com/vi/-NhEhptZ2_o/maxresdefault.jpg)](https://youtu.be/-NhEhptZ2_o)
-
-🔗 **[Watch E2E Scenario Video on YouTube](https://youtu.be/-NhEhptZ2_o)**
+[![Watch the E2E Test Video](https://img.youtube.com/vi/-NhEhptZ2_o/hqdefault.jpg)](https://youtu.be/-NhEhptZ2_o)
 
 ---
 
