@@ -14,12 +14,12 @@ Click the preview image below to watch the automated end-to-end booking scenario
 
 All analytical and manual QA artifacts produced during this project are accessible directly via the relative links below (clicking a link opens the corresponding PDF document inside GitHub):
 
-- **[Master Project Overview & Test Plan](./docs/Project_overview_test_plan.pdf?raw=true)** — Comprehensive strategy, session business rules, constraints, and scope.
-- **[High-Level Test Scenarios](./docs/Test_scenarios.pdf?raw=true)** — Architectural map and logical coverage of the mapped functionalities.
-- **[Manual Test Cases Ledger](./docs/Manual_test_cases.pdf?raw=true)** — Step-by-step test design conditions executed for local baseline validations.
-- **[Formal Bug Report](./docs/Bug_report.pdf?raw=true)** — Structural defect logging identifying application failures (including validation bypasses on Step 5).
-- **[UI/UX & Accessibility Checklist](./docs/Checklist.pdf?raw=true)** — Responsiveness audits on mobile breakpoints (e.g., iPhone 13/14 widths) and BITV 2.0 / WCAG 2.1 cross-compliance logs.
-- **[Test Execution Report](./docs/Test_execution_report.pdf?raw=true)** — Log of processed scenario verdicts and system behaviors.
+- **[Master Project Overview & Test Plan](./docs/Project_overview_test_plan.pdf)** — Comprehensive strategy, session business rules, constraints, and scope.
+- **[High-Level Test Scenarios](./docs/Test_scenarios.pdf)** — Architectural map and logical coverage of the mapped functionalities.
+- **[Manual Test Cases Ledger](./docs/Manual_test_cases.pdf)** — Step-by-step test design conditions executed for local baseline validations.
+- **[Formal Bug Report](./docs/Bug_report.pdf)** — Structural defect logging identifying application failures (including validation bypasses on Step 5).
+- **[UI/UX & Accessibility Checklist](./docs/Checklist.pdf)** — Responsiveness audits on mobile breakpoints (e.g., iPhone 13/14 widths) and BITV 2.0 / WCAG 2.1 cross-compliance logs.
+- **[Test Execution Report](./docs/Test_execution_report.pdf)** — Log of processed scenario verdicts and system behaviors.
 
 
 ## 🚀 Core Tech Stack & Architecture
