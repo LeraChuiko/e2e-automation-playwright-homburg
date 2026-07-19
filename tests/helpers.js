@@ -17,8 +17,16 @@ const LOCATORS = {
   langSelectBtn: 'button[aria-label="Sprache wählen"]',
 };
 
+// export async function setupPage(page) {
+//   await page.goto("https://termine-reservieren.de/termine/homburg/");
+//   await page.getByRole("button", { name: "Akzeptieren" }).click();
+// }
+
 export async function setupPage(page) {
-  await page.goto("https://termine-reservieren.de/termine/homburg/");
+  await page.goto("https://termine-reservieren.de/termine/homburg/", {
+    waitUntil: "domcontentloaded",
+    timeout: 15000 
+  });
   await page.getByRole("button", { name: "Akzeptieren" }).click();
 }
 
