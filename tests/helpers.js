@@ -25,7 +25,7 @@ const LOCATORS = {
 export async function setupPage(page) {
   await page.goto("https://termine-reservieren.de/termine/homburg/", {
     waitUntil: "domcontentloaded",
-    timeout: 15000 
+    timeout: 5000,
   });
   await page.getByRole("button", { name: "Akzeptieren" }).click();
 }
