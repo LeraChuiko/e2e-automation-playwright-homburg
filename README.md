@@ -25,7 +25,9 @@ The documentation files are available in the `docs/` folder:
 - **Language:** JavaScript (ES6+)
 - **Architecture Design:** Helper-based modular structure (`helpers.js`) to keep locators and reusable actions organized.
 - **Network Interception & Safety:** API mocking using `page.route()` to simulate server failures (HTTP 500) and handle appointment slot selection safely without creating real database holds.
-- **Virtual Time Manipulation:** Fast-forwarding client-side session timers via `page.clock` for instant execution of timeout scenarios.
+- **Virtual Time Manipulation:**
+- Virtual Time Manipulation: Fast-forwarding client-side session timers via `page.clock` for instant execution of timeout scenarios.
+- Automated Accessibility Auditing: Integrated `@axe-core/playwright` to validate WCAG 2.1 / BITV 2.0 compliance across all booking steps.
 
 ## ⚡ Quick Start
 
